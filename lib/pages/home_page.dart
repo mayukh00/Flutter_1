@@ -7,19 +7,23 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     final String dayss = "First";
 
+    Color c;
     return Scaffold(
       appBar: AppBar(
-          title: Text(" Mayukh's App"), //creates the top bar
-          
-
+        //creates the top bar
+        title: Text(" Mayukh's App"),
+        centerTitle: true,
+        // backgroundColor: Colors.black,
       ),
       body: Center(
         child: Container(
           child: Text("Welcome to $dayss app"),
         ),
       ),
-      drawer: Drawer(), //menu bar at top left
-      backgroundColor: Colors.pink[100],
+      drawer: const Drawer(
+          // backgroundColor: Colors.blueGrey[700],
+          ), //                                               //Drawer : menu bar at top left
+      // backgroundColor: Colors.cyan[50],
     );
   }
 }

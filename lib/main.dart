@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/home_page.dart';
+import 'package:flutter_application_1/pages/home_page.dart';
+import 'package:flutter_application_1/pages/login_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -10,17 +11,24 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // int days = 1;
-    // String dayss = "first";
-    // bool isEmpty = true;
-    // num intAndfloat = 30.5;
-    // const pi = 3.14;
-
-    // var day1 = "Thu"; //general variable type
-
+    //                                       //wrap with widget/ with center shortcut-- ctrl+ .
     return MaterialApp(
-                                      //wrap with widget/ with center shortcut-- ctrl+ .
-      home: HomePage(),
+      // home:  HomePage(),            //     open HomePage by default which is again done in route
+      themeMode: ThemeMode.system,
+      //                             //ThemeMode.system, changes theme to dark or light accordingly
+      theme: ThemeData(primarySwatch: Colors.red),
+      //                           // primaryswitch does color combi accrdng to amber coor theme
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+        //                            // brightness for when system is dark
+      ),
+
+      initialRoute: "/login", //initially "/"
+      routes: {
+        "/": (context) => const HomePage(),
+        //                                        // initial route "/" imples default page.
+        "/login": (context) => LoginPage(),
+      },
     );
   }
 }
