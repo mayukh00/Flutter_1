@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(MyApp());
@@ -16,8 +17,12 @@ class MyApp extends StatelessWidget {
       // home:  HomePage(),            //     open HomePage by default which is again done in route
       themeMode: ThemeMode.system,
       //                             //ThemeMode.system, changes theme to dark or light accordingly
-      theme: ThemeData(primarySwatch: Colors.red),
-      //                           // primaryswitch does color combi accrdng to amber coor theme
+      theme: ThemeData(
+        primarySwatch: Colors.red,
+        fontFamily: GoogleFonts.lato().fontFamily, // gives all font to lato
+        //  primaryTextTheme: GoogleFonts.latoTextTheme()
+      ), // google fonts packages imported in as dependency in yaml
+      //                           // primaryswitch does color combi accrdng to specified color color theme
       darkTheme: ThemeData(
         brightness: Brightness.dark,
         //                            // brightness for when system is dark
@@ -25,7 +30,7 @@ class MyApp extends StatelessWidget {
 
       initialRoute: "/login", //initially "/"
       routes: {
-        "/": (context) => const HomePage(),
+        "/": (context) => HomePage(),
         //                                        // initial route "/" imples default page.
         "/login": (context) => LoginPage(),
       },
