@@ -11,10 +11,12 @@ class LoginPage extends StatelessWidget {
     return Material(
         color: Colors.white,
         child: SingleChildScrollView(
+          //when device is off dimension, it adds a scrolling
           child: Column(
             children: [
-              Image.asset("assets/images/login_image.png", fit: BoxFit.cover),
+              Image.asset("images/loginimage.png", fit: BoxFit.contain),
               SizedBox(
+                // gives blank space
                 height: 20.0,
               ),
               Text(
@@ -45,11 +47,11 @@ class LoginPage extends StatelessWidget {
                       height: 40.0,
                     ),
                     ElevatedButton(
+                      child: Text("Login"),
+                      style: TextButton.styleFrom(minimumSize: Size(150, 40)),
                       onPressed: () {
                         Navigator.pushNamed(context, MyRoutes.homeRoute);
                       },
-                      child: Text("Login"),
-                      style: TextButton.styleFrom(minimumSize: Size(150, 40)),
                     ),
                   ],
                 ),
