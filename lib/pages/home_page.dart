@@ -1,3 +1,5 @@
+// ignore_for_file: prefer_const_declarations, prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class HomePage extends StatelessWidget {
@@ -10,7 +12,6 @@ class HomePage extends StatelessWidget {
     //Color c;
     return Scaffold(
       appBar: AppBar(
-        //creates the top bar
         title: Text(" Mayukh's App"),
         centerTitle: true,
         // backgroundColor: Colors.black,
