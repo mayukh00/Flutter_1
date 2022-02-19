@@ -14,23 +14,22 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      // home:  HomePage(),            //     open HomePage by default which is again done in route
+      debugShowCheckedModeBanner: false,
+      // home:  HomePage(),
       themeMode: ThemeMode.system,
 
       theme: ThemeData(
-        primarySwatch: Colors.red,
-        fontFamily: GoogleFonts.lato().fontFamily, // gives all font to lato
-        //  primaryTextTheme: GoogleFonts.latoTextTheme()
-      ), // google fonts packages imported in as dependency in yaml
-      //                           // primaryswitch does color combi accrdng to specified color color theme
-      darkTheme: ThemeData(
-        brightness: Brightness.dark,
-        //                            // brightness for when system is dark
+        primarySwatch: Colors.teal,
+        fontFamily: GoogleFonts.lato().fontFamily,
       ),
 
-      initialRoute: "/login", //initially "/"
+      darkTheme: ThemeData(
+        brightness: Brightness.dark,
+      ),
+
+      initialRoute: MyRoutes.homeRoute,
       routes: {
-        "/": (context) => HomePage(),
+        "/": (context) => LoginPage(),
         MyRoutes.homeRoute: (context) => HomePage(), // from routes.dart
         MyRoutes.loginRoute: (context) => LoginPage(),
       },
