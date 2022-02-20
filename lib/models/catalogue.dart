@@ -2,20 +2,31 @@ class CatalogueModel {
   static final items = [
     Item(
         image:
-            "https://guesseu.scene7.com/is/image/GuessEU/M63H24W7JF0-L302-ALTGHOST?wid=1500&fmt=jpeg&qlt=80&op_sharpen=0&op_usm=1.0,1.0,5,0&iccEmbed=0",
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc",
         name: "CHECK PRINT SHIRT",
-        price: 110)
+        price: 110,
+        color: '',
+        desc: '',
+        id: 1)
   ];
 }
 
 class Item {
-  final String image;
-  final String name;
-  final num price;
+  final int id;
 
-  Item({
-    required this.image,
-    required this.name,
-    required this.price,
-  });
+  final String name;
+  final String desc;
+
+  final num price;
+  final String color;
+
+  final String image;
+
+  Item(
+      {required this.id,
+      required this.name,
+      required this.desc,
+      required this.price,
+      required this.color,
+      required this.image});
 }
