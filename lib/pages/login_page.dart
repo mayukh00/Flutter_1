@@ -10,8 +10,9 @@ class LoginPage extends StatefulWidget {
   State<LoginPage> createState() => _LoginPageState();
 }
 
+String name = "";
+
 class _LoginPageState extends State<LoginPage> {
-  String name = "";
   bool changebutton = false;
 
   final _formKey = GlobalKey<FormState>();
