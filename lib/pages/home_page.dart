@@ -1,11 +1,15 @@
-// ignore_for_file: prefer_const_declarations, prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_declarations, prefer_const_constructors, unused_local_variable, prefer_const_literals_to_create_immutables
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'dart:convert';
+import 'package:velocity_x/velocity_x.dart';
+
 import 'package:flutter_application_1/models/catalogue.dart';
 import 'package:flutter_application_1/pages/login_page.dart';
 import 'package:flutter_application_1/widgets/drawer.dart';
 import 'package:flutter_application_1/widgets/item_widget.dart';
+import 'package:flutter_application_1/widgets/theme.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -36,45 +40,79 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     final String dayss = "First";
-
-    //Color c;
     return Scaffold(
-        appBar: AppBar(
-          title: Text("$name's App"),
-          centerTitle: true,
-        ),
-        body: Padding(
-            padding: const EdgeInsets.all(18.0),
-            child: (CatalogueModel.items != null &&
+        backgroundColor: MyTheme.creamcolor,
+        body: SafeArea(
+          child: Container(
+            padding: Vx.m32,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                CatalogueHeader(),
+                if (CatalogueModel.items != null &&
                     CatalogueModel.items.isNotEmpty)
-                ? GridView.builder(
-                    gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 16,
-                        crossAxisSpacing: 16),
-                    itemBuilder: (context, index) {
-                      final item = CatalogueModel.items[index];
-                      return Card(
-                          clipBehavior: Clip.antiAlias,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(10)),
-                          child: GridTile(
-                              header: Container(
-                                child: Text(
-                                  item.name,
-                                  style: TextStyle(color: Colors.white),
-                                ),
-                                padding: EdgeInsets.all(12),
-                                decoration: BoxDecoration(color: Colors.teal),
-                              ),
-                              child: Image.network(item.image),
-                              footer: Text(item.price.toString())));
-                    },
-                    itemCount: CatalogueModel.items.length,
-                  )
-                : Center(
+                  CatalogueList().expand()
+                else
+                  Center(
                     child: CircularProgressIndicator(),
-                  )),
-        drawer: MyDrawer());
+                  )
+              ],
+            ),
+          ),
+        ));
+  }
+}
+
+class CatalogueHeader extends StatelessWidget {
+  const CatalogueHeader({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        //from velocity package
+        "Catalog App".text.xl5.bold.color(MyTheme.darkbluish).make(),
+        "Trending Products".text.xl2.make(),
+      ],
+    );
+  }
+}
+
+class CatalogueList extends StatelessWidget {
+  const CatalogueList({Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView.builder(
+      shrinkWrap: true,
+      itemBuilder: (context, index) {
+        final catalogue = CatalogueModel.items[index];
+        return CatalogueItem(catalogue: catalogue);
+      },
+      itemCount: CatalogueModel.items.length,
+    );
+  }
+}
+
+class CatalogueItem extends StatelessWidget {
+  final Item catalogue;
+
+  const CatalogueItem({
+    Key? key,
+    required this.catalogue,
+  })  : assert(catalogue != null),
+        super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return VxBox(
+        child: Row(
+      children: [
+        Image.network(
+          catalogue.image,
+        ).box.p16.color(MyTheme.creamcolor).make()
+      ],
+    )).white.roundedLg.square(150).make().py16();
   }
 }
