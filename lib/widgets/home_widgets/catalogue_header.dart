@@ -1,6 +1,4 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_application_1/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CatalogueHeader extends StatelessWidget {
@@ -12,7 +10,9 @@ class CatalogueHeader extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         //from velocity package
-        "Catalog App".text.xl5.bold.color(MyTheme.darkBluish).make(),
+        // ignore: deprecated_member_use
+        "Catalog App".text.xl5.bold.color(context.theme.accentColor).make(),
+
         "Trending Products".text.xl2.make(),
       ],
     );
