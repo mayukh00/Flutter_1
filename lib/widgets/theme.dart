@@ -27,14 +27,11 @@ class MyTheme {
 
   static ThemeData darkTheme(BuildContext context) => ThemeData(
         fontFamily: GoogleFonts.poppins().fontFamily,
+        brightness: Brightness.dark,
         cardColor: Colors.black,
         canvasColor: darkCreamColor,
-
-        brightness: Brightness.dark,
-
         // ignore: deprecated_member_use
         buttonColor: lightBluish,
-
         // ignore: deprecated_member_use
         accentColor: Colors.white,
         appBarTheme: AppBarTheme(
@@ -42,7 +39,10 @@ class MyTheme {
           elevation: 0.0,
           iconTheme: IconThemeData(color: Colors.white),
           toolbarTextStyle: Theme.of(context).textTheme.bodyText2,
-          titleTextStyle: Theme.of(context).textTheme.headline6,
+          titleTextStyle: Theme.of(context)
+              .textTheme
+              .headline6
+              ?.copyWith(color: Colors.white),
         ),
       );
 
