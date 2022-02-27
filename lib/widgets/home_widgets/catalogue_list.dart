@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_1/models/catalogue.dart';
 import 'package:flutter_application_1/pages/home_detail_page.dart';
-import 'package:flutter_application_1/pages/home_page.dart';
 import 'package:flutter_application_1/widgets/home_widgets/catalogue_image.dart';
-import 'package:flutter_application_1/widgets/theme.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 class CatalogueList extends StatelessWidget {
