@@ -1,11 +1,7 @@
 import 'package:flutter_application_1/models/catalogue.dart';
 
 class CartModel {
-  //singleton class
-  static final cartModel = CartModel._internal();
-  CartModel._internal();
-  factory CartModel() => cartModel;
-
+  
   //catalogue field
   late CatalogueModel _catalogue;
 
