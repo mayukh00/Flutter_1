@@ -37,7 +37,6 @@ class _HomePageState extends State<HomePage> {
 
   @override
   Widget build(BuildContext context) {
-    final String dayss = "First";
     return Scaffold(
         backgroundColor: context.cardColor,
         floatingActionButton: FloatingActionButton(
